@@ -8,3 +8,7 @@ pub async fn handle_todo(todo: web::Json<Todo>) -> HttpResponse {
 
     HttpResponse::Created().json(new_todo)
 }
+
+pub async fn health_check() -> HttpResponse {
+    HttpResponse::Ok().json("API is working fine!!!")
+}
