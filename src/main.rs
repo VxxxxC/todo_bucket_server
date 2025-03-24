@@ -1,18 +1,9 @@
 use actix_web::{App, HttpRequest, HttpResponse, HttpServer, Responder, get, post, web};
+use routes::main_route::init;
 
-#[get("/")]
-async fn hello() -> impl Responder {
-    HttpResponse::Ok().body("Hello world!")
-}
-
-#[post("/echo")]
-async fn echo(req_body: String) -> impl Responder {
-    HttpResponse::Ok().body(req_body)
-}
-
-async fn manual_hello() -> impl Responder {
-    HttpResponse::Ok().body("Hey I'm manual hello!")
-}
+mod api_handlers;
+mod api_types;
+mod routes;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
