@@ -6,7 +6,7 @@ pub async fn handle_todo(todo: web::Json<Todo>) -> HttpResponse {
         item: todo.item.clone(),
     };
 
-    HttpResponse::Created().json(new_todo)
+    HttpResponse::Created().json(format!("item created : {} ", new_todo.item))
 }
 
 pub async fn health_check() -> HttpResponse {
