@@ -1,4 +1,4 @@
-use actix_web::{web, HttpResponse};
+use actix_web::{http::StatusCode, web, HttpResponse};
 use crate::api_types::todo_types::Todo;
 
 pub async fn handle_todo(todo: web::Json<Todo>) -> HttpResponse {
@@ -6,7 +6,9 @@ pub async fn handle_todo(todo: web::Json<Todo>) -> HttpResponse {
         item: todo.item.clone(),
     };
 
-    HttpResponse::Created().json(format!("item created : {} ", new_todo.item))
+    let res = format!("item created : {} ", new_todo.item);
+    HttpResponse::Ok().status(StatusCode::OK).body(res)
+    // HttpResponse::body(format!("item created : {} ", new_todo.item))
 }
 
 pub async fn health_check() -> HttpResponse {
