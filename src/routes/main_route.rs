@@ -4,7 +4,7 @@ use actix_web::{App, HttpRequest, HttpResponse, HttpServer, Responder, get, post
 pub fn init(cfg: &mut web::ServiceConfig) {
     cfg.service(
         web::scope("/api")
-            .route("todo", web::post().to(handle_todo))
+            .route("/todo", web::post().to(handle_todo))
             .route("/health", web::get().to(health_check)),
     );
 }

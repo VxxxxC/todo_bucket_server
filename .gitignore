@@ -1,3 +1,10 @@
+# Git
+.git
+.gitignore
+
+# Env
+.env
+
 # Compile directory
 /target
 
