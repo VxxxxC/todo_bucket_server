@@ -1,5 +1,5 @@
 use crate::api_handlers::todo_handler::{handle_todo, health_check};
-use actix_web::{App, HttpRequest, HttpResponse, HttpServer, Responder, get, post, web};
+use actix_web::web;
 
 pub fn init(cfg: &mut web::ServiceConfig) {
     cfg.service(

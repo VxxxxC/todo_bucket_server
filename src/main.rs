@@ -1,4 +1,4 @@
-use actix_web::{App, HttpResponse, HttpServer, Responder, get, post, web};
+use actix_web::{App, HttpResponse, HttpServer, Responder, get, post};
 use dotenv::dotenv;
 use routes::main_route::init;
 use std::{env, time::Duration};
@@ -15,7 +15,7 @@ async fn hello() -> impl Responder {
 #[post("/exit")]
 async fn exit() -> HttpResponse {
     println!("Shutting down the server...");
-    
+
     // Shuts down server after 2 seconds
     tokio::spawn(async move {
         tokio::time::sleep(Duration::from_secs(2)).await;
@@ -29,7 +29,6 @@ async fn exit() -> HttpResponse {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let env = dotenv().ok();
-    println!("env : {:?}", env);
 
     let host = env::var("HOST").unwrap_or_else(|_| "127.0.0.1".to_string());
     let port = env::var("PORT").unwrap_or_else(|_| "8080".to_string());
