@@ -1,4 +1,4 @@
-use actix_web::{App, HttpResponse, HttpServer, Responder, get, post};
+use actix_web::{get, post, App, HttpResponse, HttpServer, Responder};
 use dotenv::dotenv;
 use routes::main_route::init;
 use std::{env, time::Duration};
